@@ -39,23 +39,25 @@ class AquiferAppState extends ChangeNotifier {
   var drinkInterval = 1; // Default drink interval
 
   void toggleReminder() {
-  /// Switches notifs on/off
-  /// 
-  /// Args: None
-  /// 
-  /// Returns: void
-  print('Toggling reminders');
-  print('Reminders are turned', {appState.current});
-  notifyListeners(); // Notify listeners about the change  
+    /// Switches notifs on/off
+    ///
+    /// Args: None
+    ///
+    /// Returns: void
+    print('Toggling reminders');
+    print('Reminders are turned $current');
+    notifyListeners(); // Notify listeners about the change
   }
 
   void confirmDrink() {
     /// Confirms the user is hydrated and restarts the drinking schedule
-    /// 
+    ///
     /// args: None
-    /// 
+    ///
     /// Returns: Void
-    print('You are now Hydrated! Dont stop, Next drink in {appState.drinkInterval}');
+    print(
+      'You are now Hydrated! Dont stop, Next drink in {appState.drinkInterval}',
+    );
   }
 }
 
@@ -75,22 +77,18 @@ class ReminderHome extends StatelessWidget {
           const Text('Welcome to Aquifer!'),
 
           ElevatedButton(
-            onPressed: () => appState.toggleReminder(),  // Logic to switch on reminders
-            child: Row (
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.repeat),
-                ),
-                const Text('Reminders'),
-              ],
+            onPressed: () =>
+                appState.toggleReminder(), // Logic to switch on reminders
+            child: Row(
+              children: [const Icon(Icons.repeat), const Text('Reminders')],
             ),
           ),
 
           ElevatedButton(
-            onPressed: () => appState.confirmDrink(), // Logic for user to confirm they are hydrated and restarts reminder
+            onPressed: () => appState
+                .confirmDrink(), // Logic for user to confirm they are hydrated and restarts reminder
             child: const Text('Confirm Water Intake'),
           ),
-
         ],
       ),
     );
